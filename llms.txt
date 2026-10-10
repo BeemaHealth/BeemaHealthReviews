@@ -1,0 +1,8 @@
+# TeleHealth Review Hub
+
+> Patient reviews and comparisons of telehealth companies, scored on one published methodology. Some listed companies have a disclosed relationship with the site's operators.
+
+## Pages
+- [Home](https://beemahealth.github.io/BeemaHealthReviews/): Beema Health patient reviews. Telehealth care with standout customer service.
+- [Methodology](https://beemahealth.github.io/BeemaHealthReviews/methodology): how companies are scored and reviews moderated
+- [About](https://beemahealth.github.io/BeemaHealthReviews/about): operators and disclosures
