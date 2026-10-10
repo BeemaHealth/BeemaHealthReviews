@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 
-const SITE = (process.env.EXPO_PUBLIC_SITE_URL || 'https://beemahealth.github.io/BeemaHealthReviews').replace(/\/$/, '');
+const SITE = (process.env.EXPO_PUBLIC_SITE_URL || 'https://beemahealthreviews.com').replace(/\/$/, '');
 const companies = JSON.parse(readFileSync('data/companies.json', 'utf8'));
 const featured = companies.find((c) => c.slug === 'beema-health') ?? companies[0];
 const today = new Date().toISOString().slice(0, 10);

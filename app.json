@@ -26,9 +26,6 @@
     "plugins": [
       "expo-router"
     ],
-    "scheme": "telehealthreviews",
-    "experiments": {
-      "baseUrl": "/BeemaHealthReviews"
-    }
+    "scheme": "telehealthreviews"
   }
 }
