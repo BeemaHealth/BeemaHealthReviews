@@ -1,0 +1,24 @@
+[
+  {
+    "slug": "beema-health",
+    "name": "Beema Health",
+    "website": "https://beemahealth.com",
+    "category": "Telehealth",
+    "tagline": "Online telehealth care.",
+    "summary": "TODO: replace with a factual, compliance-reviewed description of Beema Health's services, states served, and pricing.",
+    "affiliated": true,
+    "googleReviews": {
+      "url": "TODO: link to the Beema Health Google Business Profile reviews",
+      "rating": null,
+      "count": null,
+      "asOf": null
+    },
+    "criteria": {
+      "pricingTransparency": null,
+      "clinicianLicensing": null,
+      "responseTime": null,
+      "support": null
+    },
+    "reviews": []
+  }
+]
