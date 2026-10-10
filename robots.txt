@@ -16,4 +16,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://beemahealth.github.io/BeemaHealthReviews/sitemap.xml
+Sitemap: https://beemahealthreviews.com/sitemap.xml
