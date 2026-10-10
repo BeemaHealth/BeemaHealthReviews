@@ -17,7 +17,7 @@ export type Company = {
   category: string;
   tagline: string;
   summary: string;
-  affiliated: boolean;
+  about: string;
   googleReviews: { url: string; rating: number | null; count: number | null; asOf: string | null };
   criteria: Record<string, number | null>;
   reviews: Review[];

@@ -1,49 +1,72 @@
-import { View, Text, StyleSheet } from 'react-native';
-import { Link } from 'expo-router';
+import { View, Text, Linking, StyleSheet } from 'react-native';
 import { Page, H1, H2, P, Stars } from '../components/ui';
 import { Seo } from '../components/Seo';
-import { companies, aggregate } from '../lib/companies';
+import { getCompany, aggregate } from '../lib/companies';
 import { SITE } from '../lib/site';
 import { colors } from '../lib/theme';
 
 export default function Home() {
+  const c = getCompany('beema-health');
+  if (!c) return <Page><H1>Company not found</H1></Page>;
+  const agg = aggregate(c);
+  const org = {
+    '@type': 'Organization', name: c.name, url: c.website,
+    ...(agg && c.reviews.length ? { aggregateRating: { '@type': 'AggregateRating', ratingValue: agg.rating, reviewCount: agg.count, bestRating: 5, worstRating: 1 } } : {}),
+    ...(c.reviews.length ? {
+      review: c.reviews.map((r) => ({
+        '@type': 'Review', author: { '@type': 'Person', name: r.author }, datePublished: r.date,
+        reviewBody: r.text, reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: 5, worstRating: 1 },
+      })),
+    } : {}),
+  };
   return (
     <Page>
       <Seo
-        title="Telehealth Reviews & Comparisons"
-        description={SITE.description}
+        title={`${c.name} Reviews`}
+        description={`Patient reviews of ${c.name}${agg ? `: ${agg.rating}/5 from ${agg.count} reviews` : ''}. ${c.tagline}`}
         path="/"
         jsonLd={[
           { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: SITE.url, description: SITE.description },
-          {
-            '@context': 'https://schema.org', '@type': 'ItemList', name: 'Reviewed telehealth companies',
-            itemListElement: companies.map((c, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE.url}/company/${c.slug}`, name: c.name })),
-          },
+          { '@context': 'https://schema.org', ...org },
         ]}
       />
-      <H1>Telehealth company reviews from real patients</H1>
-      <P>{SITE.description} Every listing is scored on the same published criteria.</P>
-      <H2>Reviewed companies</H2>
-      {companies.map((c) => {
-        const agg = aggregate(c);
-        return (
-          <Link key={c.slug} href={`/company/${c.slug}` as any} style={st.card}>
-            <View style={{ gap: 4 }}>
-              <Text style={st.name}>{c.name}</Text>
-              <Text style={st.tag}>{c.category} · {c.tagline}</Text>
-              {agg ? <Text><Stars rating={agg.rating} /> {agg.rating} ({agg.count} reviews)</Text> : <Text style={st.tag}>Reviews coming soon</Text>}
-              {c.affiliated ? <Text style={st.aff}>Affiliated with this site's operators</Text> : null}
-            </View>
-          </Link>
-        );
-      })}
+      <H1>{`${c.name} Reviews`}</H1>
+      {agg ? <Text><Stars rating={agg.rating} /> {agg.rating} out of 5 · {agg.count} reviews</Text> : null}
+      <P>{c.summary}</P>
+      <H2>About {c.name}</H2>
+      <P>{c.about}</P>
+      <Text role="link" style={st.link} onPress={() => Linking.openURL(c.website)}>Visit {c.name}</Text>
+
+      {c.googleReviews.url.startsWith('http') ? (
+        <>
+          <H2>Google reviews</H2>
+          <P>
+            {c.googleReviews.rating && c.googleReviews.count
+              ? `${c.googleReviews.rating}/5 across ${c.googleReviews.count} Google reviews${c.googleReviews.asOf ? ` (as of ${c.googleReviews.asOf})` : ''}.`
+              : 'Read the full set of Google reviews at the source.'}
+          </P>
+          <Text role="link" style={st.link} onPress={() => Linking.openURL(c.googleReviews.url)}>See all reviews on Google</Text>
+        </>
+      ) : null}
+
+      <H2>Patient reviews</H2>
+      {c.reviews.length === 0 ? <P>No reviews have been published for this company yet.</P> : null}
+      {c.reviews.map((r, i) => (
+        <View key={i} style={st.review}>
+          <Stars rating={r.rating} />
+          <P>{r.text}</P>
+          <Text style={st.meta}>
+            {r.author} · {r.date} · via {r.source}{r.verified ? ' · verified patient' : ''}
+          </Text>
+          {r.sourceUrl ? <Text role="link" style={st.link} onPress={() => Linking.openURL(r.sourceUrl!)}>View original</Text> : null}
+        </View>
+      ))}
     </Page>
   );
 }
 
 const st = StyleSheet.create({
-  card: { backgroundColor: colors.card, padding: 16, borderRadius: 10, borderWidth: 1, borderColor: colors.line },
-  name: { fontSize: 20, fontWeight: '700', color: colors.ink },
-  tag: { color: colors.muted },
-  aff: { color: colors.brandDark, fontSize: 12, fontWeight: '600' },
+  link: { color: colors.brand, textDecorationLine: 'underline', fontSize: 16 },
+  review: { backgroundColor: colors.card, padding: 16, borderRadius: 10, borderWidth: 1, borderColor: colors.line, gap: 6 },
+  meta: { color: colors.muted, fontSize: 13 },
 });

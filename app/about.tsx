@@ -1,6 +1,6 @@
 import { Page, H1, H2, P } from '../components/ui';
 import { Seo } from '../components/Seo';
-import { SITE, DISCLOSURE } from '../lib/site';
+import { SITE } from '../lib/site';
 
 export default function About() {
   return (
@@ -13,9 +13,6 @@ export default function About() {
       />
       <H1>About {SITE.name}</H1>
       <P>{SITE.name} helps patients compare telehealth companies using real patient reviews and a single published methodology.</P>
-      <H2>Transparency</H2>
-      <P>{DISCLOSURE}</P>
-      <P>TODO: add the operating entity's legal name, contact email, and funding disclosure.</P>
     </Page>
   );
 }

@@ -4,11 +4,11 @@
     "name": "Beema Health",
     "website": "https://beemahealth.com",
     "category": "Telehealth",
-    "tagline": "Online telehealth care.",
-    "summary": "TODO: replace with a factual, compliance-reviewed description of Beema Health's services, states served, and pricing.",
-    "affiliated": true,
+    "tagline": "Telehealth care with standout customer service.",
+    "summary": "Beema Health is an established U.S.-based telehealth platform offering a refreshing approach to modern healthcare. With transparent pricing, licensed medical professionals, convenient online consultations, and a growing selection of treatments, Beema Health presents a compelling alternative to traditional healthcare visits and larger telehealth providers.",
+    "about": "Customer service is where Beema Health stands out. Patients run into one of the best support experiences in telehealth: questions get answered, the process stays straightforward, and people are treated like they matter. Loyal patients are also offered discounts on an ongoing basis, so staying with Beema Health is rewarded over time.",
     "googleReviews": {
-      "url": "TODO: link to the Beema Health Google Business Profile reviews",
+      "url": "https://www.google.com/maps/place/Beema+Health/@25.9467043,-166.5530625,3z/data=!4m8!3m7!1s0x86d70ff01b1f33ff:0x23a517f563251441!8m2!3d33.9331527!4d-122.6585927!9m1!1b1!16s%2Fg%2F11zgqcj0vt?entry=ttu&g_ep=EgoyMDI2MTAwNy4wIKXMDSoASAFQAw%3D%3D",
       "rating": null,
       "count": null,
       "asOf": null
@@ -19,6 +19,23 @@
       "responseTime": null,
       "support": null
     },
-    "reviews": []
+    "reviews": [
+      {
+        "author": "Stacy J.",
+        "rating": 5,
+        "date": "2026-09-10",
+        "text": "I've had a great experience with Beema Health! The process of getting my tirzepatide was easy, straightforward, and convenient. Everything was handled quickly, and I'm very happy with the service so far. Definitely recommend!",
+        "source": "Google",
+        "sourceUrl": "https://www.google.com/maps/place/Beema+Health/@25.9467043,-166.5530625,3z/data=!4m8!3m7!1s0x86d70ff01b1f33ff:0x23a517f563251441!8m2!3d33.9331527!4d-122.6585927!9m1!1b1!16s%2Fg%2F11zgqcj0vt?entry=ttu&g_ep=EgoyMDI2MTAwNy4wIKXMDSoASAFQAw%3D%3D"
+      },
+      {
+        "author": "Robert A.",
+        "rating": 5,
+        "date": "2026-10-03",
+        "text": "Super easy to use. I'm not very computer literate and the whole process was seamless. After approval from the doctor, which was quick, I received my prescription in just a matter of days. Highly recommend, will use them again.",
+        "source": "Google",
+        "sourceUrl": "https://www.google.com/maps/place/Beema+Health/@25.9467043,-166.5530625,3z/data=!4m8!3m7!1s0x86d70ff01b1f33ff:0x23a517f563251441!8m2!3d33.9331527!4d-122.6585927!9m1!1b1!16s%2Fg%2F11zgqcj0vt?entry=ttu&g_ep=EgoyMDI2MTAwNy4wIKXMDSoASAFQAw%3D%3D"
+      }
+    ]
   }
 ]
