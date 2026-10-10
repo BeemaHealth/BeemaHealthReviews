@@ -22,7 +22,7 @@ export function Seo({ title, description, path, jsonLd, noindex }: Props) {
       <meta name="twitter:title" content={full} />
       <meta name="twitter:description" content={description} />
       {blocks.map((b, i) => (
-        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(b) }} />
+        <script key={i} type="application/ld+json">{JSON.stringify(b)}</script>
       ))}
     </Head>
   );
